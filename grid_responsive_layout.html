@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Flexbox Layout - Space Theme</title>
+    <title>Responsive CSS Grid Layout - Space Theme</title>
     <style>
         * {
             margin: 0;
@@ -13,215 +13,488 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #0a0e27;
+            /* Premium animated space gradient background */
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 25%, #16213e 50%, #1a1a3e 75%, #0a0e27 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            background-attachment: fixed;
             color: #ffffff;
-            padding: 20px;
+            padding: 40px 20px;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Premium star field overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent);
+            background-size: 200% 200%;
+            background-position: 0% 0%;
+            opacity: 0.6;
+            animation: twinkle 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Premium glow overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, rgba(100, 181, 246, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(138, 43, 226, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 10s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
             color: #64b5f6;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-in, glowPulse 4s ease-in-out infinite;
+            text-shadow: 
+                0 0 20px rgba(100, 181, 246, 0.6),
+                0 0 40px rgba(100, 181, 246, 0.3),
+                0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(100, 181, 246, 0.6),
+                             0 0 40px rgba(100, 181, 246, 0.3);
+            }
+            50% { 
+                text-shadow: 0 0 30px rgba(100, 181, 246, 0.8),
+                             0 0 60px rgba(100, 181, 246, 0.5),
+                             0 0 80px rgba(100, 181, 246, 0.2);
+            }
+        }
+
+        /* ============================================
+           GRID ROW CONTAINER - CSS GRID LAYOUT
+           ============================================ */
         /* Container for each row */
         .row {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            gap: 20px;
+            /* display: grid - Enables CSS Grid layout */
+            display: grid;
+            margin-bottom: 30px;
+            /* gap: Space between grid items */
+            gap: 24px;
+            position: relative;
+            z-index: 1;
         }
 
+        /* ============================================
+           GRID ITEMS - PREMIUM SPACE DESIGN
+           ============================================ */
         /* Base item styling */
         .item {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 30px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            /* Premium glassmorphism background */
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            padding: 40px;
+            border-radius: 20px;
+            /* CSS Grid for centering content */
+            display: grid;
+            /* place-items: Centers content both horizontally and vertically */
+            place-items: center;
             text-align: center;
-            min-height: 200px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            min-height: 220px;
+            /* Premium multi-layer shadows for depth */
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                0 4px 16px rgba(100, 181, 246, 0.2),
+                0 1px 3px rgba(100, 181, 246, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in backwards;
+        }
+
+        /* Premium shimmer effect */
+        .item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                rgba(100, 181, 246, 0.15),
+                transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .item:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Premium border glow on hover */
+        .item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, #64b5f6, #8a2be2, #64b5f6);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .item:hover::after {
+            opacity: 0.7;
         }
 
         .item:hover {
-            transform: translateY(-5px);
-        }
-
-        .item img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
-            filter: brightness(0) invert(1);
+            transform: translateY(-12px) scale(1.03);
+            /* Enhanced depth with space glow */
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 8px 24px rgba(100, 181, 246, 0.5),
+                0 4px 12px rgba(138, 43, 226, 0.4),
+                0 0 40px rgba(100, 181, 246, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border-color: rgba(100, 181, 246, 0.6);
         }
 
         .item h3 {
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .item:hover h3 {
+            transform: scale(1.05);
+        }
+
+        .item h3:first-of-type {
+            font-size: 2.8em;
             margin-bottom: 10px;
-            font-size: 1.5em;
+            filter: drop-shadow(0 4px 12px rgba(100, 181, 246, 0.5))
+                    drop-shadow(0 0 20px rgba(100, 181, 246, 0.3));
+        }
+
+        .item:hover h3:first-of-type {
+            filter: drop-shadow(0 6px 16px rgba(100, 181, 246, 0.7))
+                    drop-shadow(0 0 30px rgba(100, 181, 246, 0.5));
         }
 
         .item p {
-            font-size: 0.95em;
-            line-opacity: 0.9;
+            font-size: 0.98em;
+            opacity: 0.95;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Row 1: 4 equal columns */
-        .row-1 .item {
-            flex: 1 1 calc(25% - 20px);
-            min-width: 200px;
+        /* ============================================
+           ROW 1: FOUR EQUAL COLUMNS - CSS GRID
+           ============================================ */
+        .row-1 {
+            /* grid-template-columns: Creates 4 equal-width columns
+               repeat(4, 1fr) creates four columns, each taking 1 fraction of space */
+            grid-template-columns: repeat(4, 1fr);
         }
 
-        /* Row 2: 2 equal columns */
-        .row-2 .item {
-            flex: 1 1 calc(50% - 20px);
-            min-width: 250px;
+        /* ============================================
+           ROW 2: TWO EQUAL COLUMNS - CSS GRID
+           ============================================ */
+        .row-2 {
+            /* grid-template-columns: Creates 2 equal-width columns */
+            grid-template-columns: repeat(2, 1fr);
         }
 
-        /* Row 3: 1 column (25%) + 3 columns (75%) */
+        /* ============================================
+           ROW 3: ASYMMETRIC LAYOUT (25% + 75%)
+           ============================================ */
+        .row-3 {
+            /* grid-template-columns: 1fr 3fr creates 25% / 75% split */
+            grid-template-columns: 1fr 3fr;
+        }
+
         .row-3 .item-1 {
-            flex: 1 1 calc(25% - 20px);
-            min-width: 200px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.9) 0%, rgba(245, 87, 108, 0.9) 100%);
         }
 
         .row-3 .item-2 {
-            flex: 3 1 calc(75% - 20px);
-            min-width: 300px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.9) 0%, rgba(0, 242, 254, 0.9) 100%);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                0 4px 16px rgba(79, 172, 254, 0.4);
         }
 
-        /* Row 4: Single full-width item */
+        /* ============================================
+           ROW 4: FULL-WIDTH SINGLE ITEM
+           ============================================ */
+        .row-4 {
+            /* grid-template-columns: Single column takes full width */
+            grid-template-columns: 1fr;
+        }
+
         .row-4 .item {
-            flex: 1 1 100%;
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            background: linear-gradient(135deg, rgba(67, 233, 123, 0.9) 0%, rgba(56, 249, 215, 0.9) 100%);
+            padding: 50px 40px;
         }
 
-        /* Row 5: 1 col (25%) + 2 cols (50%) + 1 col (25%) */
+        /* ============================================
+           ROW 5: THREE-COLUMN LAYOUT WITH GRID AREAS
+           Using grid-template-areas for semantic layout
+           ============================================ */
+        .row-5 {
+            /* grid-template-columns: Creates 1:2:1 ratio (25% + 50% + 25%) */
+            grid-template-columns: 1fr 2fr 1fr;
+            
+            /* grid-template-areas: Defines named areas for easy reordering */
+            grid-template-areas: "left center right";
+        }
+
         .row-5 .item-1 {
-            flex: 1 1 calc(25% - 20px);
-            min-width: 200px;
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            order: 1;
+            /* grid-area: Assigns to "left" named area */
+            grid-area: left;
+            background: linear-gradient(135deg, rgba(250, 112, 154, 0.9) 0%, rgba(254, 225, 64, 0.9) 100%);
         }
 
         .row-5 .item-2 {
-            flex: 2 1 calc(50% - 20px);
-            min-width: 250px;
-            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
-            order: 2;
+            /* grid-area: Assigns to "center" named area */
+            grid-area: center;
+            background: linear-gradient(135deg, rgba(48, 207, 208, 0.9) 0%, rgba(51, 8, 103, 0.9) 100%);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                0 4px 16px rgba(48, 207, 208, 0.4);
         }
 
         .row-5 .item-3 {
-            flex: 1 1 calc(25% - 20px);
-            min-width: 200px;
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            order: 3;
+            /* grid-area: Assigns to "right" named area */
+            grid-area: right;
+            background: linear-gradient(135deg, rgba(168, 237, 234, 0.9) 0%, rgba(254, 214, 227, 0.9) 100%);
         }
 
-        /* Row 6: Creative layout - 5 items with varying sizes */
-        .row-6 .item {
-            flex: 1 1 calc(20% - 20px);
-            min-width: 150px;
+        /* ============================================
+           ROW 6: CREATIVE FIVE-ITEM LAYOUT WITH SPANNING
+           ============================================ */
+        .row-6 {
+            /* grid-template-columns: Creates 5 equal columns as base */
+            grid-template-columns: repeat(5, 1fr);
+            /* grid-auto-flow: Items flow in rows (default, made explicit) */
+            grid-auto-flow: row;
         }
 
         .row-6 .item-1 {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            background: linear-gradient(135deg, rgba(255, 154, 158, 0.9) 0%, rgba(254, 207, 239, 0.9) 100%);
         }
 
         .row-6 .item-2 {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            flex: 2 1 calc(40% - 20px);
+            /* grid-column: span 2 - This item spans 2 columns */
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(255, 236, 210, 0.9) 0%, rgba(252, 182, 159, 0.9) 100%);
         }
 
         .row-6 .item-3 {
-            background: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%);
+            background: linear-gradient(135deg, rgba(255, 110, 127, 0.9) 0%, rgba(191, 233, 255, 0.9) 100%);
         }
 
         .row-6 .item-4 {
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            background: linear-gradient(135deg, rgba(224, 195, 252, 0.9) 0%, rgba(142, 197, 252, 0.9) 100%);
         }
 
         .row-6 .item-5 {
-            background: linear-gradient(135deg, #f77062 0%, #fe5196 100%);
+            background: linear-gradient(135deg, rgba(247, 112, 98, 0.9) 0%, rgba(254, 81, 150, 0.9) 100%);
         }
 
-        /* Tablet styles (768px and below) */
+        /* ============================================
+           ADVANCED CSS GRID PROPERTIES - REFERENCE
+           Additional Grid capabilities demonstrated
+           ============================================ */
+        
+        /* MINMAX() FUNCTION:
+           Defines size range between min and max values
+           Example: grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+           Creates responsive columns that are at least 250px wide
+           
+           Why useful: Eliminates need for multiple media queries
+           Enables fluid, responsive designs
+        */
+
+        /* AUTO-FIT vs AUTO-FILL:
+           Both create responsive columns with repeat()
+           auto-fill: Creates as many columns as fit, leaving empty tracks
+           auto-fit: Creates columns and collapses empty tracks
+           
+           Used above: Creates truly responsive grids
+        */
+
+        /* PLACE-ITEMS:
+           Shorthand for align-items and justify-items
+           Used in .item to center all content
+           Syntax: place-items: center; (centers both axes)
+        */
+
+        /* GRID-TEMPLATE-AREAS:
+           Creates semantic, named grid layouts
+           Used in Row 5 for intuitive reordering
+           Makes responsive changes more readable
+        */
+
+        /* ============================================
+           TABLET RESPONSIVE STYLES (768px and below)
+           ============================================ */
         @media (max-width: 768px) {
-            /* Row 1: 2 columns */
-            .row-1 .item {
-                flex: 1 1 calc(50% - 20px);
+            body {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+
+            /* Row 1: Change to 2 columns */
+            .row-1 {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             /* Row 2: Stack vertically */
-            .row-2 .item {
-                flex: 1 1 100%;
+            .row-2 {
+                grid-template-columns: 1fr;
             }
 
             /* Row 3: Stack vertically */
-            .row-3 .item-1,
-            .row-3 .item-2 {
-                flex: 1 1 100%;
+            .row-3 {
+                grid-template-columns: 1fr;
             }
 
             /* Row 4: Remains full width */
             
-            /* Row 5: Change order - middle item first, then side items */
-            .row-5 .item-1 {
-                order: 2;
-                flex: 1 1 100%;
+            /* Row 5: Reorder using grid-template-areas */
+            .row-5 {
+                grid-template-columns: 1fr;
+                /* Change layout order - center first, then sides */
+                grid-template-areas: 
+                    "center"
+                    "left"
+                    "right";
             }
 
-            .row-5 .item-2 {
-                order: 1;
-                flex: 1 1 100%;
-            }
-
-            .row-5 .item-3 {
-                order: 3;
-                flex: 1 1 100%;
-            }
-
-            /* Row 6: 2 columns */
-            .row-6 .item {
-                flex: 1 1 calc(50% - 20px);
+            /* Row 6: Change to 2 columns */
+            .row-6 {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .row-6 .item-2 {
-                flex: 1 1 calc(50% - 20px);
+                /* Remove span on smaller screens */
+                grid-column: span 1;
             }
         }
 
-        /* Mobile styles (480px and below) */
+        /* ============================================
+           MOBILE RESPONSIVE STYLES (480px and below)
+           ============================================ */
         @media (max-width: 480px) {
-            /* All rows stack vertically */
-            .row-1 .item,
-            .row-3 .item-1,
-            .row-3 .item-2,
-            .row-6 .item,
-            .row-6 .item-2 {
-                flex: 1 1 100%;
-            }
-
-            .item {
-                min-height: 150px;
-                padding: 20px;
+            body {
+                padding: 20px 10px;
             }
 
             h1 {
                 font-size: 1.5em;
             }
 
+            /* All rows stack vertically */
+            .row-1,
+            .row-2,
+            .row-3,
+            .row-4,
+            .row-5,
+            .row-6 {
+                grid-template-columns: 1fr;
+            }
+
+            /* Row 5: Maintain reordered layout */
+            .row-5 {
+                grid-template-areas: 
+                    "center"
+                    "left"
+                    "right";
+            }
+
+            .row-6 .item-2 {
+                grid-column: span 1;
+            }
+
+            .item {
+                min-height: 180px;
+                padding: 25px;
+            }
+
             .item h3 {
-                font-size: 1.2em;
+                font-size: 1.3em;
             }
         }
     </style>
 </head>
 <body>
-    <h1>🌌 Responsive Flexbox Layout - Space Exploration Theme 🚀</h1>
+    <h1>🌌 Responsive CSS Grid Layout - Space Exploration Theme 🚀</h1>
 
     <!-- Row 1: 4 equal columns -->
     <div class="row row-1">
@@ -331,10 +604,10 @@
         </div>
     </div>
 
-    <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; text-align: center;">
-        <h3>📱 Resize Your Browser Window</h3>
-        <p>Watch how the layout adapts for Desktop (>768px), Tablet (≤768px), and Mobile (≤480px)!</p>
-        <p><strong>Note Row 5:</strong> Uses the <code>order</code> property to rearrange items on smaller screens - the middle item moves to the top!</p>
+    <div style="margin-top: 50px; padding: 40px; background: linear-gradient(135deg, rgba(100, 181, 246, 0.15) 0%, rgba(138, 43, 226, 0.1) 100%); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 20px; text-align: center; border: 1px solid rgba(100, 181, 246, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15); position: relative; z-index: 1;">
+        <h3 style="color: #64b5f6; font-size: 1.6rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 20px rgba(100, 181, 246, 0.5);">📱 Resize Your Browser Window</h3>
+        <p style="font-size: 1.1rem; margin-bottom: 15px; line-height: 1.8; letter-spacing: 0.3px;">Watch how the layout adapts for Desktop (>768px), Tablet (≤768px), and Mobile (≤480px)!</p>
+        <p style="font-size: 1.05rem; line-height: 1.8;"><strong>Note Row 5:</strong> Uses CSS Grid <code style="background: rgba(0, 0, 0, 0.5); padding: 4px 10px; border-radius: 6px; color: #64b5f6; border: 1px solid rgba(100, 181, 246, 0.4); box-shadow: 0 0 10px rgba(100, 181, 246, 0.2);">grid-template-areas</code> to rearrange items on smaller screens - the middle item moves to the top!</p>
     </div>
 </body>
 </html>
