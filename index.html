@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the world of artificial intelligence with our responsive CSS Grid layout showcasing AI chips, neural networks, and cutting-edge computing technology. A comprehensive web development project demonstrating advanced CSS Grid techniques.">
+    
+    <!-- Open Graph tags for social media -->
+    <meta property="og:title" content="AI Chips - Responsive CSS Grid Layout">
+    <meta property="og:description" content="Journey through the world of AI computing with an interactive, responsive web layout featuring processors, neural networks, and chip technology using CSS Grid.">
+    <meta property="og:type" content="website">
+    
+    <title>AI Chips - Responsive CSS Grid Layout</title>
+    
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Emoji Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖥️</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            /* Premium animated gradient background */
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%, #0a0a0a 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            background-attachment: fixed;
+            color: #ffffff;
+            padding-top: 80px; /* Space for fixed header */
+            position: relative;
+            letter-spacing: 0.3px; /* Premium typography refinement */
+        }
+
+        /* Premium animated gradient background */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Premium texture overlay with grid pattern */
+            background-image: 
+                linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Additional premium texture layer */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(138, 43, 226, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* ============================================
+           HEADER STYLES - CSS GRID LAYOUT
+           ============================================ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            /* Premium glassmorphism effect */
+            background: rgba(10, 10, 10, 0.75);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            padding: 1rem 2rem;
+            /* Premium multi-layer shadows for depth */
+            box-shadow: 
+                0 4px 30px rgba(0, 0, 0, 0.5), 
+                0 1px 0 rgba(0, 217, 255, 0.15),
+                0 8px 16px rgba(0, 217, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            z-index: 1000;
+            
+            /* CSS Grid: Two-column layout for logo and navigation */
+            display: grid;
+            grid-template-columns: auto 1fr;
+            /* align-items: Vertically center items within grid cells */
+            align-items: center;
+            /* gap: Space between grid items */
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d9ff;
+            /* CSS Grid for logo content (emoji + text) */
+            display: grid;
+            grid-template-columns: auto auto;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            /* Premium glow effect */
+            filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.3));
+        }
+
+        @supports (background-clip: text) or (-webkit-background-clip: text) {
+            .logo {
+                background: linear-gradient(135deg, #00d9ff 0%, #00a8cc 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            /* Premium enhanced glow on hover */
+            filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.6));
+        }
+
+        nav {
+            /* justify-self: Position navigation at the end of its grid cell */
+            justify-self: end;
+        }
+
+        nav ul {
+            list-style: none;
+            /* CSS Grid for navigation items */
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            /* grid-auto-flow: Automatically place items in a row (default behavior made explicit) */
+            grid-auto-flow: column;
+            gap: 2rem;
+            margin: 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            /* Premium letter spacing */
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d9ff, #00a8cc);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #00d9ff;
+            background: rgba(0, 217, 255, 0.15);
+            /* Premium glow effect on hover */
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+        }
+
+        nav a:hover::after {
+            width: 80%;
+        }
+
+        nav a:focus {
+            outline: 2px solid #00d9ff;
+            outline-offset: 2px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 20px;
+            animation: fadeIn 0.8s ease-in;
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #00d9ff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            animation: fadeIn 1s ease-in, glowPulse 3s ease-in-out infinite;
+            /* Premium letter spacing for elegance */
+            letter-spacing: 1px;
+            line-height: 1.4;
+            /* Premium text shadow for depth */
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.4),
+                         0 0 40px rgba(0, 217, 255, 0.2);
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(0, 217, 255, 0.4),
+                             0 0 40px rgba(0, 217, 255, 0.2);
+            }
+            50% { 
+                text-shadow: 0 0 30px rgba(0, 217, 255, 0.6),
+                             0 0 60px rgba(0, 217, 255, 0.3),
+                             0 0 80px rgba(0, 217, 255, 0.1);
+            }
+        }
+
+        @supports (background-clip: text) or (-webkit-background-clip: text) {
+            h1 {
+                background: linear-gradient(135deg, #00d9ff 0%, #00a8cc 50%, #0088ff 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+        }
+
+        /* Section Labels */
+        .section-label {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15) 0%, rgba(0, 168, 204, 0.08) 100%);
+            padding: 0.85rem 1.75rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #00d9ff;
+            font-weight: 600;
+            color: #00d9ff;
+            font-size: 0.85rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            box-shadow: 
+                0 4px 15px rgba(0, 217, 255, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            /* Premium text shadow */
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+        }
+
+        /* ============================================
+           GRID ROW CONTAINER - CSS GRID LAYOUT
+           ============================================ */
+        /* Container for each row - Base grid styling */
+        .row {
+            /* display: grid - Enables CSS Grid layout for this container */
+            display: grid;
+            /* Grid columns will be defined per row for different layouts */
+            margin-bottom: 60px;
+            /* gap: Creates space between grid items (replaces margin-based spacing) */
+            gap: 24px;
+        }
+
+        /* ============================================
+           GRID ITEMS - BASE STYLING WITH PREMIUM DESIGN
+           ============================================ */
+        /* Base item styling */
+        .item {
+            /* Premium glassmorphism background with enhanced blur */
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.85) 0%, rgba(22, 33, 62, 0.85) 100%);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            /* Premium generous padding for breathing room */
+            padding: 40px;
+            border-radius: 20px;
+            /* CSS Grid for item content - vertically center everything */
+            display: grid;
+            /* place-items: Shorthand for align-items and justify-items
+               Centers content both horizontally and vertically */
+            place-items: center;
+            text-align: center;
+            min-height: 220px;
+            /* Premium multi-layer shadows for depth effect */
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                0 4px 16px rgba(0, 217, 255, 0.15),
+                0 1px 3px rgba(0, 217, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        border-color 0.4s ease,
+                        background 0.4s ease;
+            animation: fadeIn 0.6s ease-in backwards;
+            border: 1px solid rgba(0, 217, 255, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Premium shimmer effect overlay */
+        .item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 217, 255, 0.15), 
+                rgba(138, 43, 226, 0.1),
+                transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .item:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Premium glow border effect on hover */
+        .item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, #00d9ff, #8a2be2, #00d9ff);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .item:hover::after {
+            opacity: 0.6;
+        }
+
+        /* Staggered animation for items */
+        .item:nth-child(1) { animation-delay: 0.1s; }
+        .item:nth-child(2) { animation-delay: 0.15s; }
+        .item:nth-child(3) { animation-delay: 0.2s; }
+        .item:nth-child(4) { animation-delay: 0.25s; }
+        .item:nth-child(5) { animation-delay: 0.3s; }
+
+        /* Section animation */
+        section {
+            animation: slideUp 0.8s ease-out backwards;
+        }
+
+        section:nth-of-type(1) { animation-delay: 0.2s; }
+        section:nth-of-type(2) { animation-delay: 0.3s; }
+        section:nth-of-type(3) { animation-delay: 0.4s; }
+        section:nth-of-type(4) { animation-delay: 0.5s; }
+        section:nth-of-type(5) { animation-delay: 0.6s; }
+        section:nth-of-type(6) { animation-delay: 0.7s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .item:hover {
+            transform: translateY(-12px) scale(1.03);
+            /* Premium enhanced depth on hover with neon glow */
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 8px 24px rgba(0, 217, 255, 0.4),
+                0 4px 12px rgba(138, 43, 226, 0.3),
+                0 0 40px rgba(0, 217, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            border-color: rgba(0, 217, 255, 0.6);
+            /* Premium background enhancement on hover */
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 100%);
+        }
+
+        .item:focus-within {
+            outline: 3px solid #00d9ff;
+            outline-offset: 3px;
+        }
+
+        .item img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+        }
+
+        .item h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            /* Premium letter spacing for elegance */
+            letter-spacing: 0.5px;
+            transition: transform 0.3s ease;
+        }
+
+        .item:hover h3 {
+            transform: scale(1.05);
+        }
+
+        .item h3:first-of-type {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            /* Premium glow effect for emoji icons */
+            filter: drop-shadow(0 4px 12px rgba(0, 217, 255, 0.4))
+                    drop-shadow(0 0 20px rgba(0, 217, 255, 0.2));
+        }
+
+        .item:hover h3:first-of-type {
+            filter: drop-shadow(0 6px 16px rgba(0, 217, 255, 0.6))
+                    drop-shadow(0 0 30px rgba(0, 217, 255, 0.4));
+        }
+
+        .item p {
+            font-size: 0.98em;
+            opacity: 0.92;
+            /* Premium refined line height for readability */
+            line-height: 1.8;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+            /* Premium letter spacing */
+            letter-spacing: 0.3px;
+        }
+
+        /* ============================================
+           ROW 1: FOUR EQUAL COLUMNS - CSS GRID
+           ============================================ */
+        /* Row 1: 4 equal columns (25% each) */
+        .row-1 {
+            /* grid-template-columns: Creates 4 equal-width columns using fractional units
+               repeat(4, 1fr) is equivalent to: 1fr 1fr 1fr 1fr
+               Each column takes 1 fraction of available space */
+            grid-template-columns: repeat(4, 1fr);
+            /* This creates a responsive grid that automatically wraps when space is tight */
+        }
+
+        /* Alternative responsive approach using auto-fit and minmax */
+        /* Uncomment below to enable automatic responsive columns without media queries:
+        .row-1 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        auto-fit: Automatically fits as many columns as possible
+        minmax(250px, 1fr): Each column is at least 250px, max 1fr
+        This eliminates the need for manual media queries for this row
+        */
+
+        /* ============================================
+           ROW 2: TWO EQUAL COLUMNS - CSS GRID
+           ============================================ */
+        /* Row 2: 2 equal columns (50% each) */
+        .row-2 {
+            /* grid-template-columns: Creates 2 equal-width columns
+               repeat(2, 1fr) is equivalent to: 1fr 1fr
+               Each column takes 50% of available space */
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* ============================================
+           ROW 3: ASYMMETRIC LAYOUT (25% + 75%) - CSS GRID
+           ============================================ */
+        /* Row 3: 1 narrow column (25%) + 1 wide column (75%) */
+        .row-3 {
+            /* grid-template-columns: Creates asymmetric columns
+               1fr 3fr means: first column gets 1 part, second gets 3 parts
+               This creates a 25% / 75% split (1:3 ratio) */
+            grid-template-columns: 1fr 3fr;
+        }
+
+        .row-3 .item-1 {
+            /* Premium gradient for narrow column */
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+        }
+
+        .row-3 .item-2 {
+            /* Premium gradient for wide column with enhanced glow */
+            background: linear-gradient(135deg, #00d9ff 0%, #0088cc 100%);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                0 4px 16px rgba(0, 217, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* ============================================
+           ROW 4: FULL-WIDTH SINGLE ITEM - CSS GRID
+           ============================================ */
+        /* Row 4: Single full-width item (100%) */
+        .row-4 {
+            /* grid-template-columns: Single column takes full width
+               1fr means the column takes all available space */
+            grid-template-columns: 1fr;
+        }
+
+        .row-4 .item {
+            /* Premium gradient for full-width item */
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f4c75 50%, #1a1a2e 100%);
+            /* Premium enhanced padding for full-width impact */
+            padding: 50px 40px;
+        }
+
+        /* ============================================
+           ROW 5: THREE-COLUMN LAYOUT WITH GRID AREAS
+           Using grid-template-areas for semantic layouts and easy reordering
+           ============================================ */
+        /* Row 5: 1-2-1 layout (25% + 50% + 25%) */
+        .row-5 {
+            /* grid-template-columns: Creates three columns with 1:2:1 ratio
+               1fr 2fr 1fr means: side columns get 1 part each, center gets 2 parts
+               This creates a 25% / 50% / 25% layout */
+            grid-template-columns: 1fr 2fr 1fr;
+            
+            /* grid-template-areas: Defines named grid areas for semantic layouts
+               This allows us to place items by name rather than position
+               Makes reordering items trivial by just changing the area names
+               Format: Each string represents a row, each word is a grid area name */
+            grid-template-areas: "left center right";
+        }
+
+        .row-5 .item-1 {
+            /* grid-area: Assigns this item to the "left" named area
+               This is much more semantic than using grid-column/grid-row numbers */
+            grid-area: left;
+            /* Premium purple gradient */
+            background: linear-gradient(135deg, #533483 0%, #7c3aed 100%);
+        }
+
+        .row-5 .item-2 {
+            /* grid-area: Assigns this item to the "center" named area */
+            grid-area: center;
+            /* Premium blue gradient with enhanced glow */
+            background: linear-gradient(135deg, #00d9ff 0%, #0066cc 100%);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                0 4px 16px rgba(0, 217, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .row-5 .item-3 {
+            /* grid-area: Assigns this item to the "right" named area */
+            grid-area: right;
+            /* Premium dark gradient */
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+        }
+
+        /* ============================================
+           ROW 6: CREATIVE FIVE-ITEM LAYOUT WITH SPANNING
+           Using grid-column to span multiple columns
+           ============================================ */
+        /* Row 6: Creative layout - 5 items with varying widths */
+        .row-6 {
+            /* grid-template-columns: Creates 5 equal columns
+               repeat(5, 1fr) creates a base 5-column grid
+               Items can then span multiple columns for varying widths */
+            grid-template-columns: repeat(5, 1fr);
+            
+            /* grid-auto-flow: Controls how auto-placed items flow into the grid
+               'row' (default): Items fill rows first, then move to next row
+               'column': Items fill columns first
+               'dense': Tries to fill holes in the grid (useful for masonry layouts) */
+            grid-auto-flow: row;
+        }
+
+        .row-6 .item-1 {
+            /* This item takes 1 column (default) */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .row-6 .item-2 {
+            /* grid-column: span 2 - This item spans across 2 columns
+               Making it twice as wide as the other items
+               Alternative syntax: grid-column: 2 / 4 (starts at line 2, ends at line 4) */
+            grid-column: span 2;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .row-6 .item-3 {
+            /* This item takes 1 column (default) */
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .row-6 .item-4 {
+            /* This item takes 1 column (default) */
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .row-6 .item-5 {
+            /* This item takes 1 column (default) 
+               Note: With the span 2 on item-2, this will wrap to next row on smaller screens */
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        /* ============================================
+           INFO BOX - PREMIUM GLASSMORPHISM
+           ============================================ */
+        /* Info Box */
+        .info-box {
+            margin-top: 60px;
+            padding: 50px;
+            /* Premium glassmorphism with animated gradient */
+            background: linear-gradient(135deg, 
+                rgba(0, 217, 255, 0.15) 0%, 
+                rgba(138, 43, 226, 0.1) 50%,
+                rgba(0, 168, 204, 0.1) 100%);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-radius: 24px;
+            text-align: center;
+            animation: fadeIn 1.2s ease-in;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            /* Premium multi-layer shadows */
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(0, 217, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .info-box h3 {
+            margin-bottom: 24px;
+            color: #00d9ff;
+            font-size: 1.6rem;
+            font-weight: 600;
+            /* Premium letter spacing and text shadow */
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+        }
+
+        @supports (background-clip: text) or (-webkit-background-clip: text) {
+            .info-box h3 {
+                background: linear-gradient(135deg, #00d9ff 0%, #00a8cc 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+        }
+
+        .info-box p {
+            margin-bottom: 15px;
+            line-height: 1.9;
+            font-size: 1.08rem;
+            /* Premium letter spacing */
+            letter-spacing: 0.3px;
+        }
+
+        .info-box code {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            color: #00d9ff;
+            border: 1px solid rgba(0, 217, 255, 0.4);
+            /* Premium glow effect on code */
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+           FOOTER STYLES - CSS GRID LAYOUT
+           ============================================ */
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.98) 20%);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 4rem 2rem 2rem;
+            margin-top: 80px;
+            border-top: 1px solid rgba(0, 217, 255, 0.3);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00d9ff, transparent);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            /* CSS Grid: Four-column footer layout */
+            display: grid;
+            /* grid-template-columns with auto-fit and minmax for responsive footer
+               auto-fit: Collapses empty columns and expands existing ones
+               minmax(250px, 1fr): Each column is at least 250px, maximum 1fr
+               This creates a responsive footer that adapts from 4 cols to 1 col */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section {
+            /* Each section is a grid item - no need for flex properties */
+        }
+
+        .footer-section h4 {
+            color: #00d9ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+            /* Premium letter spacing */
+            letter-spacing: 0.8px;
+            /* Premium text shadow */
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+        }
+
+        @supports (background-clip: text) or (-webkit-background-clip: text) {
+            .footer-section h4 {
+                background: linear-gradient(135deg, #00d9ff 0%, #00a8cc 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            padding: 0.6rem 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            /* Premium letter spacing */
+            letter-spacing: 0.3px;
+        }
+
+        .footer-section a::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #00d9ff;
+        }
+
+        .footer-section a:hover {
+            color: #00d9ff;
+            padding-left: 8px;
+            transform: translateX(4px);
+            /* Premium glow effect on hover */
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+        }
+
+        .footer-section a:hover::before {
+            left: -16px;
+            opacity: 1;
+        }
+
+        .footer-section a:focus {
+            outline: 2px solid #00d9ff;
+            outline-offset: 2px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.5rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+           ADVANCED CSS GRID PROPERTIES - REFERENCE & EXAMPLES
+           These demonstrate additional Grid capabilities beyond basic layouts
+           ============================================ */
+        
+        /* GRID-AUTO-ROWS / GRID-AUTO-COLUMNS:
+           Controls the size of implicitly created grid tracks
+           Useful when grid items overflow the defined grid template
+           
+           Example usage:
+           .container {
+               display: grid;
+               grid-template-columns: repeat(3, 1fr);
+               grid-auto-rows: minmax(150px, auto);
+           }
+           
+           What it does: Any rows created beyond the template will be at least 150px tall
+           Why useful: Ensures consistent minimum height for dynamically added content
+           Used in this layout: Implicitly applied to maintain consistent row heights
+        */
+
+        /* MINMAX() FUNCTION:
+           Defines a size range between minimum and maximum values
+           Syntax: minmax(min, max)
+           
+           Examples used in this layout:
+           - Footer: minmax(250px, 1fr) ensures columns are at least 250px
+           - This prevents columns from becoming too narrow while allowing growth
+           
+           Why useful: Creates responsive layouts without media queries
+           Enables fluid designs that adapt to content and viewport
+        */
+
+        /* AUTO-FIT vs AUTO-FILL:
+           Both work with repeat() to create responsive columns
+           
+           auto-fill: Creates as many columns as fit, leaving empty tracks
+           auto-fit: Creates columns and collapses any empty tracks
+           
+           Example:
+           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+           
+           What it does: Automatically adjusts column count based on viewport width
+           Why useful: Eliminates need for multiple media queries
+           Creates truly responsive grids that adapt to any screen size
+           
+           Used in this layout: Footer uses auto-fit for responsive columns
+        */
+
+        /* PLACE-CONTENT:
+           Shorthand for align-content and justify-content
+           Centers grid tracks within the grid container
+           
+           Syntax: place-content: <align-content> <justify-content>;
+           Or: place-content: center; (centers both)
+           
+           Example:
+           .container {
+               display: grid;
+               place-content: center;
+           }
+           
+           What it does: Centers the entire grid within its container
+           Why useful: Quick centering of grid content in both dimensions
+           Used in this layout: place-items centers item content
+        */
+
+        /* PLACE-ITEMS:
+           Shorthand for align-items and justify-items
+           Centers content within grid cells
+           
+           Used in this layout: .item uses place-items: center
+           This centers all content (emoji, title, text) within each card
+           
+           Why useful: Cleaner syntax than setting align-items and justify-items separately
+           Creates perfectly centered content with one property
+        */
+
+        /* GRID-AUTO-FLOW:
+           Controls how auto-placed items flow into the grid
+           Values: row | column | dense | row dense | column dense
+           
+           'row' (default): Items fill rows first, then create new rows
+           'column': Items fill columns first, then create new columns  
+           'dense': Attempts to fill gaps in the grid (useful for masonry)
+           
+           Example:
+           .container {
+               display: grid;
+               grid-template-columns: repeat(3, 1fr);
+               grid-auto-flow: dense;
+           }
+           
+           What it does: Fills in holes left by items with specific placement
+           Why useful: Creates tighter, more efficient layouts
+           Used in this layout: Row 6 explicitly sets grid-auto-flow: row
+        */
+
+        /* SUBGRID:
+           Allows nested grids to adopt parent grid tracks
+           Currently has limited browser support (Firefox, Safari 16+, Chrome 117+)
+           
+           Example:
+           .parent {
+               display: grid;
+               grid-template-columns: repeat(3, 1fr);
+           }
+           .child {
+               display: grid;
+               grid-template-columns: subgrid;
+           }
+           
+           What it does: Child grid aligns with parent grid lines
+           Why useful: Creates consistent alignment across nested grids
+           Note: Not used in this layout due to browser support considerations
+           As browser support improves, subgrid enables more sophisticated layouts
+        */
+
+        /* GRID-COLUMN / GRID-ROW SPANNING:
+           Allows items to span multiple columns or rows
+           Syntax: grid-column: span <number>;
+           Or: grid-column: <start> / <end>;
+           
+           Examples used in this layout:
+           - Row 6 item-2: grid-column: span 2 (spans 2 columns)
+           - Alternative syntax: grid-column: 1 / 3 (start line 1, end line 3)
+           
+           What it does: Makes items occupy multiple grid cells
+           Why useful: Creates varied, interesting layouts
+           Enables asymmetric designs while maintaining grid structure
+        */
+
+        /* GRID-TEMPLATE-AREAS:
+           Defines named grid areas for semantic layouts
+           Each string represents a row, each word is an area name
+           
+           Used extensively in Row 5:
+           Desktop: grid-template-areas: "left center right";
+           Tablet/Mobile: Changes to "center" "left" "right" (stacked)
+           
+           What it does: Creates a visual map of the grid layout
+           Why useful: 
+           - More readable and maintainable than numeric coordinates
+           - Easy to visualize the layout structure
+           - Simple reordering by rearranging area names
+           - Perfect for responsive design changes
+           
+           This is one of Grid's most powerful features for complex layouts
+        */
+
+        /* ============================================
+           TABLET RESPONSIVE STYLES (768px and below)
+           Using CSS Grid media queries
+           ============================================ */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+                /* Adjust header grid for smaller screens */
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            nav {
+                justify-self: center;
+            }
+
+            nav ul {
+                gap: 1rem;
+                /* Adjust navigation grid to auto columns */
+                grid-template-columns: repeat(auto-fit, minmax(80px, auto));
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            /* Row 1: Change from 4 columns to 2 columns */
+            .row-1 {
+                /* grid-template-columns: Adjust to 2 equal columns */
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Row 2: Stack vertically (single column) */
+            .row-2 {
+                /* grid-template-columns: Single column for stacking */
+                grid-template-columns: 1fr;
+            }
+
+            /* Row 3: Stack vertically (single column) */
+            .row-3 {
+                /* grid-template-columns: Single column removes asymmetry */
+                grid-template-columns: 1fr;
+            }
+
+            /* Row 4: Remains full width (already 1fr) */
+            
+            /* Row 5: Change order using grid-template-areas
+               This demonstrates the power of grid-template-areas for reordering
+               We simply change the area layout - no need for order property! */
+            .row-5 {
+                /* Stack vertically on tablet */
+                grid-template-columns: 1fr;
+                /* grid-template-areas: Reorder items by changing the layout
+                   center appears first, then left, then right
+                   This is much more intuitive than flexbox order property */
+                grid-template-areas: 
+                    "center"
+                    "left"
+                    "right";
+            }
+
+            /* Row 6: Change from 5 columns to 2 columns */
+            .row-6 {
+                /* grid-template-columns: Adjust to 2 columns */
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .row-6 .item-2 {
+                /* Remove span on smaller screens to fit 2-column layout */
+                grid-column: span 1;
+            }
+
+            .footer-content {
+                /* Grid automatically adapts with auto-fit, but we can force single column */
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================
+           MOBILE RESPONSIVE STYLES (480px and below)
+           All layouts become single column
+           ============================================ */
+        @media (max-width: 480px) {
+            body {
+                padding-top: 70px;
+            }
+
+            header {
+                /* Stack header items vertically */
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                /* Wrap navigation items */
+                grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+                justify-items: center;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.6rem;
+            }
+
+            /* All rows stack vertically (single column) */
+            .row-1,
+            .row-2,
+            .row-3,
+            .row-4,
+            .row-5,
+            .row-6 {
+                /* grid-template-columns: Force all rows to single column */
+                grid-template-columns: 1fr;
+            }
+
+            /* Row 5: Maintain reordered layout on mobile */
+            .row-5 {
+                grid-template-areas: 
+                    "center"
+                    "left"
+                    "right";
+            }
+
+            /* Remove grid-column spanning on mobile */
+            .row-6 .item-2 {
+                grid-column: span 1;
+            }
+
+            .item {
+                min-height: 150px;
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .item h3 {
+                font-size: 1.2em;
+            }
+
+            footer {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .footer-content {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header role="banner">
+        <a href="#" class="logo" aria-label="AI Chips Home">
+            <span>🖥️</span>
+            <span>AI Chips</span>
+        </a>
+        <nav role="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="#processors">Processors</a></li>
+                <li><a href="#computing">Computing</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#development">Development</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main role="main">
+        <h1>🖥️ Responsive CSS Grid Layout - AI Chips & Computing Theme 💻</h1>
+
+        <!-- Row 1: 4 equal columns (25% each) -->
+        <section id="processors" aria-labelledby="row1-label">
+            <div class="section-label" id="row1-label">Row 1: Four Equal Columns (25% each)</div>
+            <div class="row row-1">
+                <div class="item" role="article" aria-label="CPU information">
+                    <h3>🧠</h3>
+                    <h3>CPU</h3>
+                    <p>Central Processing Unit - the brain of computers, handling general-purpose tasks and instructions.</p>
+                </div>
+                <div class="item" role="article" aria-label="GPU information">
+                    <h3>🎮</h3>
+                    <h3>GPU</h3>
+                    <p>Graphics Processing Unit - specialized for parallel processing and AI model training.</p>
+                </div>
+                <div class="item" role="article" aria-label="TPU information">
+                    <h3>⚡</h3>
+                    <h3>TPU</h3>
+                    <p>Tensor Processing Unit - Google's custom chip designed specifically for machine learning workloads.</p>
+                </div>
+                <div class="item" role="article" aria-label="NPU information">
+                    <h3>🤖</h3>
+                    <h3>NPU</h3>
+                    <p>Neural Processing Unit - optimized for neural network operations and edge AI applications.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 2: 2 equal columns (50% each) -->
+        <section id="computing" aria-labelledby="row2-label">
+            <div class="section-label" id="row2-label">Row 2: Two Equal Columns (50% each)</div>
+            <div class="row row-2">
+                <div class="item" role="article" aria-label="Machine Learning information">
+                    <h3>🧮</h3>
+                    <h3>Machine Learning</h3>
+                    <p>Training algorithms to learn from data, enabling computers to improve performance without explicit programming. Powers everything from recommendations to autonomous vehicles.</p>
+                </div>
+                <div class="item" role="article" aria-label="Deep Learning information">
+                    <h3>🔮</h3>
+                    <h3>Deep Learning</h3>
+                    <p>Advanced neural networks with multiple layers that can process complex patterns. The technology behind image recognition, natural language processing, and AI breakthroughs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 3: 1 narrow column (25%) + 1 wide column (75%) -->
+        <section id="architecture" aria-labelledby="row3-label">
+            <div class="section-label" id="row3-label">Row 3: Asymmetric Layout (25% + 75%)</div>
+            <div class="row row-3">
+                <div class="item item-1" role="article" aria-label="Transistor information">
+                    <h3>⚙️</h3>
+                    <h3>Transistor</h3>
+                    <p>The fundamental building block of all modern chips.</p>
+                </div>
+                <div class="item item-2" role="article" aria-label="Neural Network Architecture information">
+                    <h3>🕸️</h3>
+                    <h3>Neural Network Architecture</h3>
+                    <p>Modern AI chips contain billions of transistors organized into specialized cores for matrix operations. These architectures process massive parallel computations, with memory hierarchies optimized for neural network workloads. Advanced designs include tensor cores, systolic arrays, and dedicated AI accelerators.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 4: Single full-width item (100%) -->
+        <section aria-labelledby="row4-label">
+            <div class="section-label" id="row4-label">Row 4: Full-Width Single Item (100%)</div>
+            <div class="row row-4">
+                <div class="item" role="article" aria-label="Large Language Models information">
+                    <h3>🌐 Large Language Models (LLMs) 📚</h3>
+                    <p>Trained on vast datasets with billions of parameters, LLMs like GPT, Claude, and Gemini require enormous computational power. AI chips with high memory bandwidth and specialized matrix multiplication units process trillions of operations per second. Training a single model can consume megawatts of power across thousands of specialized AI accelerators, representing the cutting edge of human computational achievement.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 5: 1-2-1 layout (25% + 50% + 25%) with GRID-TEMPLATE-AREAS for reordering -->
+        <section id="development" aria-labelledby="row5-label">
+            <div class="section-label" id="row5-label">Row 5: Three-Column Layout (25% + 50% + 25%) - Uses GRID-TEMPLATE-AREAS</div>
+            <div class="row row-5">
+                <div class="item item-1" role="article" aria-label="Data Collection information">
+                    <h3>📊</h3>
+                    <h3>Data Collection</h3>
+                    <p>Gathering massive datasets from diverse sources to train AI models effectively.</p>
+                </div>
+                <div class="item item-2" role="article" aria-label="Model Training information">
+                    <h3>⚡</h3>
+                    <h3>Model Training</h3>
+                    <p>The intensive process of teaching neural networks using specialized AI chips. Requires days to months of computation, optimizing billions of parameters through backpropagation and gradient descent.</p>
+                </div>
+                <div class="item item-3" role="article" aria-label="Deployment information">
+                    <h3>🚀</h3>
+                    <h3>Deployment</h3>
+                    <p>Putting trained models into production environments for real-world applications.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 6: Creative layout - 5 items with varying widths -->
+        <section aria-labelledby="row6-label">
+            <div class="section-label" id="row6-label">Row 6: Creative Five-Item Layout (Varying Widths) - AI Chip Manufacturers</div>
+            <div class="row row-6">
+                <div class="item item-1" role="article" aria-label="NVIDIA information">
+                    <h3>🟢</h3>
+                    <h3>NVIDIA</h3>
+                    <p>Leader in GPU computing with CUDA platform and H100 chips.</p>
+                </div>
+                <div class="item item-2" role="article" aria-label="Google TPU information">
+                    <h3>🔵</h3>
+                    <h3>Google TPU</h3>
+                    <p>Custom-designed Tensor Processing Units powering Google's AI infrastructure. TPU v5 delivers breakthrough performance for large-scale machine learning workloads with innovative pod architectures.</p>
+                </div>
+                <div class="item item-3" role="article" aria-label="AMD information">
+                    <h3>🔴</h3>
+                    <h3>AMD</h3>
+                    <p>MI300 series accelerators competing in AI computing market.</p>
+                </div>
+                <div class="item item-4" role="article" aria-label="Intel information">
+                    <h3>🔷</h3>
+                    <h3>Intel</h3>
+                    <p>Gaudi accelerators and next-gen AI processors for data centers.</p>
+                </div>
+                <div class="item item-5" role="article" aria-label="Apple information">
+                    <h3>⚪</h3>
+                    <h3>Apple Silicon</h3>
+                    <p>M-series chips with unified memory and Neural Engine.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Box -->
+        <div class="info-box" role="complementary" aria-label="Responsive design information">
+            <h3>📱 Resize Your Browser Window</h3>
+            <p>Watch how the layout adapts for Desktop (>768px), Tablet (≤768px), and Mobile (≤480px)!</p>
+            <p><strong>Note Row 5:</strong> Uses CSS Grid <code>grid-template-areas</code> to rearrange items on smaller screens - the Model Training section (center) moves to the top!</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🖥️ AI Chips</h4>
+                <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                    Explore the world of artificial intelligence computing through interactive, responsive web design. A comprehensive CSS Grid layout demonstration.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#processors">Processors</a></li>
+                    <li><a href="#computing">Computing</a></li>
+                    <li><a href="#architecture">Architecture</a></li>
+                    <li><a href="#development">Development</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout" target="_blank" rel="noopener noreferrer">MDN CSS Grid Guide</a></li>
+                    <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank" rel="noopener noreferrer">CSS-Tricks Grid Guide</a></li>
+                    <li><a href="https://github.com/haroldflint63/Project_3_CSS_Grid_flint" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#" aria-label="About this project">About Project</a></li>
+                    <li><a href="#" aria-label="Contact information">Contact</a></li>
+                    <li><a href="#" aria-label="License information">License</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AI Chips - Responsive CSS Grid Layout Project. Created for educational purposes.</p>
+        </div>
+    </footer>
+</body>
+</html>
